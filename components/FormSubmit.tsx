@@ -1,0 +1,60 @@
+import { useState, ChangeEvent, FormEvent } from "react";
+
+const FormSubmit = () => {
+  const [number, setNumber] = useState<number | string>("");
+  const [error, setError] = useState<string>("");
+
+  const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setNumber(value === "" ? "" : parseInt(value));
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (typeof number === "number" && number <= 10) {
+      setError("Number must be greater than 10");
+    } else {
+      setError("");
+      alert("Form submitted successfully");
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-2xl font-bold mb-4"></h1>
+
+      <div className="bg-white border rounded-xl px-10 pt-10 pb-10 mb-4 w-96">
+        <form onSubmit={handleSubmit}>
+          <h2 className="text-blue-500 text-2xl mb-4">Form</h2>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="number"
+            >
+              Number
+            </label>
+            <input
+              type="number"
+              id="number"
+              value={number}
+              onChange={handleNumberChange}
+              placeholder="Please enter a number"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+          {error && <p className="text-red-500 text-xs italic">{error}</p>}
+          <div className="flex items-center justify-end ">
+            <button
+              type="submit"
+              className="border-2 border-blue-500 hover:bg-blue-700 text-blue-500 font-bold py-[1px] px-[10px] rounded-lg focus:outline-none focus:shadow-outline"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default FormSubmit;

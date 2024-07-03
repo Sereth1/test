@@ -22,20 +22,26 @@ const FormSubmit = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen border">
+    <div className="flex flex-col items-center justify-center p-10 h-screen border">
       <h1 className="text-2xl font-bold mb-4"></h1>
 
       <motion.div
-        className="bg-white border rounded-xl px-8 pt-6 pb-8 mb-4 w-96"
+        className="bg-white border rounded-xl px-8 pt-6 pb-8 mb-4 w-[330px]"
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{ type: "spring", stiffness: 50 }}
       >
         <form onSubmit={handleSubmit}>
-          <h2 className="text-blue-500 text-2xl mb-4 font-semibold">Form</h2>
+          <h2
+            style={{ fontFamily: "Times New Roman" }}
+            className="text-blue-500 text-4xl mb-4 "
+          >
+            Form
+          </h2>
           <div className="mb-4">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              style={{ fontFamily: "Times New Roman" }}
+              className="block text-gray-700 text-sm font-semibold mb-2"
               htmlFor="number"
             >
               Number
@@ -47,10 +53,11 @@ const FormSubmit = () => {
               value={number}
               onChange={handleNumberChange}
               placeholder="Please enter a number"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              style={{ fontFamily: "Times New Roman" }}
+              className="shadow appearance-none border rounded-lg w-full py-1 px-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-          {error && <p className="text-red-500 text-xs italic">{error}</p>}
+          {error && <p className="text-red-500 text-xs pb-3 italic">{error}</p>}
           <div className="flex items-center justify-end">
             <button
               type="submit"

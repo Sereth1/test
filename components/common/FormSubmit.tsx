@@ -1,9 +1,11 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
+import Modal from "./Modal";
 
 const FormSubmit = () => {
   const [number, setNumber] = useState<number | string>("");
   const [error, setError] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -16,8 +18,13 @@ const FormSubmit = () => {
       setError("Number must be greater than 10");
     } else {
       setError("");
-      alert("Form submitted successfully");
+      setIsModalOpen(true);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setNumber("");
   };
 
   return (
@@ -25,7 +32,7 @@ const FormSubmit = () => {
       <h1 className="text-2xl font-bold mb-4"></h1>
 
       <motion.div
-        className="bg-white border rounded-xl px-8 pt-6 pb-8 mb-4 w-[330px]"
+        className=" border rounded-xl px-8 pt-6 pb-8 mb-4 w-[330px]"
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{ type: "spring", stiffness: 50 }}
@@ -67,6 +74,8 @@ const FormSubmit = () => {
           </div>
         </form>
       </motion.div>
+
+      {isModalOpen && <Modal onClose={closeModal} number={number} />}
     </div>
   );
 };

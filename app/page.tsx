@@ -1,9 +1,10 @@
 "use client";
-import FormSubmit from "@/components/FormSubmit";
+
+import FormSubmit from "@/components/common/FormSubmit";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-white">
       <FormSubmit />
     </div>
   );

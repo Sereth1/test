@@ -26,13 +26,13 @@ const FormSubmit = () => {
       <h1 className="text-2xl font-bold mb-4"></h1>
 
       <motion.div
-        className="bg-white border rounded px-8 pt-6 pb-8 mb-4 w-96"
+        className="bg-white border rounded-xl px-8 pt-6 pb-8 mb-4 w-96"
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
         transition={{ type: "spring", stiffness: 50 }}
       >
         <form onSubmit={handleSubmit}>
-          <h2 className="text-blue-500 text-2xl mb-4">Form</h2>
+          <h2 className="text-blue-500 text-2xl mb-4 font-semibold">Form</h2>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -51,10 +51,10 @@ const FormSubmit = () => {
             />
           </div>
           {error && <p className="text-red-500 text-xs italic">{error}</p>}
-          <div className="flex items-center justify-end ">
+          <div className="flex items-center justify-end">
             <button
               type="submit"
-              className="border-2 border-blue-500 hover:bg-blue-700 text-blue-500 font-bold py-[1px] px-[10px] rounded-lg focus:outline-none focus:shadow-outline"
+              className="border-2 border-blue-500 text-blue-500 font-bold py-[1px] px-[10px] rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white hover:shadow-lg"
             >
               Submit
             </button>

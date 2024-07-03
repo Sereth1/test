@@ -1,4 +1,6 @@
+// components/Form.tsx
 import { useState, ChangeEvent, FormEvent } from "react";
+import { motion } from "framer-motion";
 
 const FormSubmit = () => {
   const [number, setNumber] = useState<number | string>("");
@@ -20,10 +22,15 @@ const FormSubmit = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen border">
       <h1 className="text-2xl font-bold mb-4"></h1>
 
-      <div className="bg-white border rounded-xl px-10 pt-10 pb-10 mb-4 w-96">
+      <motion.div
+        className="bg-white border rounded px-8 pt-6 pb-8 mb-4 w-96"
+        initial={{ x: "-100vw" }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 50 }}
+      >
         <form onSubmit={handleSubmit}>
           <h2 className="text-blue-500 text-2xl mb-4">Form</h2>
           <div className="mb-4">
@@ -34,6 +41,7 @@ const FormSubmit = () => {
               Number
             </label>
             <input
+              required
               type="number"
               id="number"
               value={number}
@@ -52,7 +60,7 @@ const FormSubmit = () => {
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 };

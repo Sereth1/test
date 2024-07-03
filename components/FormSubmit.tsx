@@ -1,4 +1,3 @@
-// components/Form.tsx
 import { useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 
